@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="card shadow-lg p-4 rounded">
+    <h2 class="text-center mb-4">Edit Rental</h2>
+    <form [formGroup]="rentalForm" (ngSubmit)="updateRental()">
+      
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Enter rental name" required />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Category</label>
+          <input type="text" class="form-control" formControlName="category" placeholder="Enter category" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Price</label>
+          <input type="number" class="form-control" formControlName="price" placeholder="Enter price" required />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Location</label>
+          <input type="text" class="form-control" formControlName="location" placeholder="Enter location" required />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Description</label>
+        <textarea class="form-control" formControlName="description" placeholder="Enter rental description" rows="3" required></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Availability</label>
+          <select class="form-control" formControlName="availability">
+            <option [value]="true">Available</option>
+            <option [value]="false">Not Available</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Upload Image</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event)" />
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-success btn-lg px-4" (click)=" updateRental()">Update Rental</button>
+        <button type="button" class="btn btn-danger btn-lg px-4" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- ✅ Bootstrap Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ✅ Rental updated successfully!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

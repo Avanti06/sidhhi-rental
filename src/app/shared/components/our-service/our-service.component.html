@@ -1,0 +1,40 @@
+<div class="container">
+    <!-- Intro Section -->
+    <section class="intro-section">
+      <div class="intro-text">
+        <h2>Reliable Car, Van & Travel Rental Services</h2>
+        <p>We provide a wide range of vehicles for your travel needs, whether it's personal, group travel, or business logistics.</p>
+      </div>
+      <div class="intro-img">
+        <img src="assets/images/travels1.jpg" alt="Car and Van Rental">
+      </div>
+    </section>
+  
+    <!-- Services Overview -->
+    <div class="row text-center">
+      <div class="col-md-4" *ngFor="let service of services">
+        <div class="service-card p-4 shadow-lg">
+          <img [src]="service.image" class="img-fluid mb-3" alt="{{ service.title }}">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Booking Steps -->
+    <section class="steps-section">
+      <h2 class="text-center">Easy Steps to Rent a Vehicle</h2>
+      <div class="steps-container">
+        <div class="step-box" *ngFor="let step of steps">
+          <h4>{{ step.title }}</h4>
+          <p>{{ step.description }}</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- CTA -->
+    <div class="text-center py-5">
+      <a routerLink="/book" class="btn btn-gradient">Book Your Ride Now</a>
+    </div>
+  </div>
+  

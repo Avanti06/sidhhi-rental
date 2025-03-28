@@ -1,0 +1,10 @@
+<div class="rental-card">
+    <img [src]="rental?.image" alt="car image" class="rental-image">
+    <div class="rental-info">
+      <h3>{{ rental.name }}</h3>
+      <p class="location"><i class="fas fa-map-marker-alt"></i>{{ rental.location }}</p>
+      <p class="price"><strong>₹{{ rental.price }}/day</strong></p>
+
+      <button class="btn btn-primary">Book now</button>
+    </div>
+  </div>

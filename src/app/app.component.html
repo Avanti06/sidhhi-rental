@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<div class="content-wrapper flex-grow-1">
+    <router-outlet></router-outlet> <!-- Main Page Content -->
+</div>
+<div *ngIf="showFooter" class="mt-5">
+<app-footer></app-footer>
+</div>

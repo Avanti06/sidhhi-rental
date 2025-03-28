@@ -1,0 +1,111 @@
+/* General Styles */
+.become-host {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+  padding: 40px 0;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #783cda, #cbb2f3);
+  color: white;
+  padding: 60px 20px;
+  border-radius: 10px;
+}
+.hero .btn {
+  background-color: #783cda;
+  font-size: 18px;
+  padding: 12px 20px;
+}
+
+/* Steps Section */
+.steps {
+  padding: 40px 20px;
+}
+.step {
+  text-align: center;
+  padding: 20px;
+}
+.step i {
+  margin-bottom: 10px;
+}
+
+/* Why Become a Host */
+.why-host {
+  background-color: #fff;
+  padding: 50px 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.benefit {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Testimonials */
+.testimonials {
+  background: linear-gradient(to right, #783cda, #783cda);
+  color: white;
+  padding: 50px 20px;
+  border-radius: 10px;
+}
+.testimonial {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* FAQ Section */
+.faqs {
+  padding: 40px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.faq {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.faq h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.faq p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Call to Action */
+.register-login {
+  text-align: center;
+  padding: 50px 20px;
+}
+.register-login .btn {
+  margin: 10px;
+  font-size: 18px;
+  padding: 12px 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .step, .benefit, .testimonial {
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 24px;
+  }
+}

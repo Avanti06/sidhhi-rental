@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <h2>Book Your Vehicle</h2>
+  <form [formGroup]="bookingForm" (ngSubmit)="openBookingSummary()">
+    
+    <div class="mb-3">
+      <label>Trip Type</label>
+      <select formControlName="tripType" class="form-control">
+        <option value="one-way">One-Way</option>
+        <option value="round-trip">Round Trip</option>
+        <option value="drop-only">Drop Only</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Pickup Location</label>
+      <input type="text" formControlName="pickupLocation" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>Drop Location</label>
+      <input type="text" formControlName="dropLocation" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>Start Date</label>
+      <input type="date" formControlName="startDate" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>End Date</label>
+      <input type="date" formControlName="endDate" *ngIf="bookingForm.controls['tripType'].value === 'round-trip'" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>Price per day</label>
+      <h4>perDayPrice: ₹{{ pricePerDay }}</h4> 
+    </div>
+    <button type="submit" class="btn btn-primary">Proceed to Summary</button>
+  </form>
+</div>
+
+<!-- Booking Summary Modal -->
+<div *ngIf="showSummaryModal" class="summary-section">
+<app-booking-summary 
+  *ngIf="showSummaryModal"
+  [bookingData]="bookingSummaryData"
+  [pricePerDay]="pricePerDay">
+</app-booking-summary>
+<button (click)="closeSummaryModal()">Close</button>
+</div>
+

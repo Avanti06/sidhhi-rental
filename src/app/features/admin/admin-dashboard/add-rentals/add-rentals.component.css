@@ -1,0 +1,32 @@
+.container {
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  
+  .card {
+    border-radius: 10px;
+  }
+
+  .card-body button {
+    background-color: #783cda;
+    color: #fff;
+  }
+  
+  .card-header {
+    font-weight: bold;
+    text-align: center;
+    background-color: #783cda;
+  }
+  
+  .form-label {
+    font-weight: 500;
+  }
+
+  .modal-footer button {
+    background-color: #783cda;
+  }
+
+  .modal-title button {
+    background-color: #783cda;
+  }

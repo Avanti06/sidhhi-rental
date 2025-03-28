@@ -1,0 +1,74 @@
+<div *ngIf="logoutMessage" class="alert alert-success text-center" role="alert">
+  {{ logoutMessage }}
+</div>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container-fluid px-md-5">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" routerLink="/">Sidhhi Rental</a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <ul class="navbar-nav mx-auto text-center">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/rentals">Rentals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/aboutus">About Us</a>
+        </li>
+      </ul>
+
+      <!-- Authentication Buttons -->
+      <div class="d-flex align-items-center">
+        <ng-container *ngIf="!isLoggedIn; else loggedInUser">
+          <button class="btn btn-outline-primary me-2" (click)="openModal('login')" data-bs-toggle="modal" data-bs-target="#authModal">Login</button>
+          <button class="btn btn-primary" (click)="openModal('register')" data-bs-toggle="modal" data-bs-target="#authModal">Sign Up</button>
+        </ng-container>
+
+        <!-- User Profile Dropdown -->
+        <ng-template #loggedInUser>
+          <ng-container *ngIf="role === 'user'">
+            <app-profile></app-profile>
+          </ng-container>
+          <a *ngIf="role === 'provider'" class="btn btn-outline-primary me-2" routerLink="/provider-dashboard">Provider Dashboard</a>
+          <a *ngIf="role === 'admin'" class="btn btn-outline-primary me-2" routerLink="/admin-dashboard">Admin Dashboard</a>
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Authentication Modal -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ modalTitle }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ng-container *ngIf="modalType === 'login'">
+          <app-login (switchToRegisterEvent)="openModal('register')"></app-login>
+        </ng-container>
+        <ng-container *ngIf="modalType === 'register'">
+          <app-register (switchToLoginEvent)="openModal('login')"></app-register>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

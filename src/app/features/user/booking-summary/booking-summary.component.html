@@ -1,0 +1,19 @@
+<div class="modal-container">
+    <div class="modal-content">
+      <h2>Booking Summary</h2>
+      
+      <p><strong>Pickup:</strong> {{ bookingData.pickupLocation }}</p>
+      <p><strong>Drop:</strong> {{ bookingData.dropLocation }}</p>
+      <p><strong>Trip Type:</strong> {{ bookingData.tripType }}</p>
+      <p><strong>Start Date:</strong> {{ bookingData.startDate }}</p>
+      <p><strong>End Date:</strong> {{ bookingData.endDate }}</p>
+      <p><strong>Per Day Price:</strong> ₹{{ pricePerDay }}</p>
+      <p><strong>Total Amount:</strong> ₹{{ totalAmount }}</p>
+      <p><strong>Booking Amount (20%):</strong> ₹{{ bookingAmount }}</p>
+      <p><strong>Remaining Amount:</strong> ₹{{ remainingAmount }}</p>
+  
+      <button class="btn btn-success" (click)="proceedToPayment()">Proceed to Pay</button>
+      <button class="btn btn-danger" (click)="close.emit()">Cancel</button>
+    </div>
+  </div>
+  

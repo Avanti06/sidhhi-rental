@@ -1,0 +1,64 @@
+<!-- hero-section -->
+<app-hero-section></app-hero-section>
+
+<!-- Services Section -->
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-list">
+        <div class="service-card">
+            <img src="travel2.jpeg" alt="Car Rental">
+            <h3>Car Rental</h3>
+            <p>Affordable car rental for daily or long trips.</p>
+        </div>
+        <div class="service-card">
+            <img src="travels1.jpeg" alt="Travel Booking">
+            <h3>Travel rental</h3>
+            <p>Plan and book travels with us.</p>
+        </div>
+        <div class="service-card">
+            <img src="assets/images/vans.jpeg" alt="Travel Booking">
+            <h3>Vans Rental</h3>
+            <p>Plan and book vans with us.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- featured rental car -->
+ <h3 class="car-top">Top Rated Car</h3>
+ <div class="rental-cards-container">
+    <app-featured-rental-card  *ngFor="let car of featuredRentals" [rental]="car"></app-featured-rental-card>
+ </div>
+
+ <!-- featured rental travel -->
+  <h3 class="travel-top">Top Rated Travels</h3>
+  <div class="rental-cards-container">
+    <app-featured-rental-travel  *ngFor="let travel of featuredRentalsTravel" [rental]="travel"></app-featured-rental-travel>
+ </div>
+
+
+<!-- How It Works -->
+<section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+        <div class="step">
+            <h3>1. Select Car</h3>
+            <p>Choose from a variety of cars for rent.</p>
+        </div>
+        <div class="step">
+            <h3>2. Book Online</h3>
+            <p>Make a secure online booking.</p>
+        </div>
+        <div class="step">
+            <h3>3. Enjoy Your Trip</h3>
+            <p>Drive or travel hassle-free.</p>
+        </div>
+    </div>
+</section>
+
+<div class="testimonials">
+    <h2>What Our Customer Says</h2>
+     <app-testimonials></app-testimonials>
+</div>
+
+

@@ -1,0 +1,15 @@
+<div class="container mt-4">
+    <h2>Profile Settings</h2>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Company Name</label>
+        <input type="text" class="form-control" [(ngModel)]="provider.company_name">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="provider.email" disabled>
+      </div>
+      <button class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+  

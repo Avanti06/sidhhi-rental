@@ -1,0 +1,19 @@
+<!-- Sidebar Container -->
+<nav class="sidebar" [class.sidebar-collapsed]="isCollapsed">
+  <div class="sidebar-header">
+    <h4 *ngIf="!isCollapsed">Admin Dashboard</h4>
+    <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+  </div>
+
+  <ul class="nav-links" *ngIf="!isCollapsed || isMobileView">
+    <li><a routerLink="/admin-dashboard/dashboard">Dashboard</a></li>
+    <li><a routerLink="/admin-dashboard/add-rental">Add Rental</a></li>
+    <li><a routerLink="/admin-dashboard/manage-vehicals">Manage Vehicles</a></li>
+    <li><a routerLink="/admin-dashboard/manage-bookings">Manage Bookings</a></li>
+    <li><a routerLink="/admin-dashboard/add-driver">Add Driver</a></li>
+    <li><a routerLink="/admin-dashboard/earnings">Earnings</a></li>
+  </ul>
+</nav>
+
+<!-- Floating Open Button (Visible when sidebar is collapsed) -->
+<button class="open-btn" *ngIf="isCollapsed" (click)="toggleSidebar()">☰</button>

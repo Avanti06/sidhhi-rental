@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.rental-cards-container {
+    display: flex;
+    flex-wrap: nowrap; /* Prevents wrapping to a new line */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 15px;
+    padding: 10px;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #783cda #f1f1f1;
+    white-space: nowrap; /* Keeps everything in a single row */
+}
+
+/* Custom scrollbar for WebKit (Chrome, Safari) */
+.rental-cards-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.rental-cards-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.rental-cards-container::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+
+.rental-cards-container::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+.car-top {
+    text-align: center;
+}
+
+.travel-top {
+    text-align: center;
+}
+/* Hero Section */
+.hero {
+     background-image: url("/assets/images/indigo.png");
+     background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #783cda;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* Services */
+.services {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.service-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 250px;
+}
+
+.service-card img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+/* How It Works */
+.how-it-works {
+    background: #f8741d;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.step {
+    max-width: 200px;
+}
+
+/* Testimonials */
+.testimonials {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.testimonial {
+    max-width: 400px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #222;
+    color: white;
+    padding: 20px 0;
+}

@@ -1,0 +1,103 @@
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Driver List</h2>
+
+    <!-- Loading Indicator -->
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p>Loading drivers...</p>
+    </div>
+
+    <!-- Driver Card Layout -->
+    <div *ngIf="!isLoading && drivers.length > 0">
+        <div class="row">
+            <div class="col-md-4 mb-4" *ngFor="let driver of updatePagination()">
+                <div class="card shadow-lg p-3">
+                    <img [src]="'http://localhost:5000/' + driver.driverPhoto" class="card-img-top driver-img" alt="Driver Photo">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ driver.name }}</h5>
+                        <p class="text-muted">{{ driver.vehicleType }}</p>
+                        <hr>
+                        <p>Email: {{ driver.email }}</p>
+                        <p>Phone: {{ driver.phoneNo }}</p>
+                        <p>License: {{ driver.licenseNumber }}</p>
+
+                        <!-- Delete Button -->
+                        <button class="btn btn-danger mt-3" (click)="openDeleteModal(driver._id, driver.name)">
+                            <i class="bi bi-trash"></i> Delete Driver
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <button class="btn" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button class="btn" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>
+    </div>
+
+    <!-- No Data Found -->
+    <div *ngIf="!isLoading && drivers.length === 0" class="text-center">
+        <p class="text-muted">No drivers found.</p>
+    </div>
+</div>
+
+<!-- 🚀 Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <strong>{{ selectedDriverName }}</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="deleteDriver()">
+                    <i class="bi bi-trash"></i> Confirm Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🚀 Success Notification Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Driver <strong>{{ deletedDriverName }}</strong> has been deleted successfully!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🚀 Error Notification Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Failed to delete <strong>{{ selectedDriverName }}</strong>. Please try again.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+<div class="container mt-4">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control"  formControlName="name" placeholder="Enter full Name">
+        <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="text-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control"  formControlName="email" placeholder="Enter email">
+        <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="text-danger">
+          Email is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
+        <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
+          Password is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <input type="text" class="form-control" formControlName="phoneNo" placeholder="Enter number">
+        <div *ngIf="registerForm.controls['phoneNo'].invalid && registerForm.controls['phoneNo'].touched" class="text-danger">
+          PhoneNo is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Role</label>
+        <select class="form-control" formControlName="role"  (change)="onRoleChange()">
+          <option value="user">User</option>
+          <!-- <option value="provider">Provider</option> -->
+        </select>
+      </div>
+
+      <!-- Provider Fields (Shown Only if Role is Provider) -->
+      <div *ngIf="isProvider">
+        <div class="mb-3">
+          <label class="form-label">Company Name</label>
+          <input type="text" class="form-control" formControlName="company_name" placeholder="Enter company name">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Company Logo</label>
+          <input type="file" class="form-control" formControlName="company_logo" (change)="onFileSelect($event)">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">GST Number</label>
+          <input type="text" class="form-control" formControlName="gst_number" placeholder="Enter GST number">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+
+      <p class="text-center mt-3">
+        Already have an account? <a (click)="switchToLogin()" class="text-primary" style="cursor:pointer;">Login here</a>
+      </p>
+    </form>
+</div>
+  

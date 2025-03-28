@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Vehicle</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (booking of bookings; track booking.id) {
+      <tr>
+        <td>{{ booking.customer }}</td>
+        <td>{{ booking.vehicle }}</td>
+        <td>{{ booking.date }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning">Edit</button>
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

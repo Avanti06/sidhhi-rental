@@ -1,0 +1,88 @@
+<div class="container mt-4">
+    <div class="card shadow-lg">
+      <div class="card-header  text-white">
+        <h4 class="mb-0">Add New Rental</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="rentalForm" (ngSubmit)="onSubmit()">
+          
+          <div class="row">
+            <!-- Vehicle Name -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Vehicle Name</label>
+              <input type="text" class="form-control" formControlName="name" placeholder="Enter vehicle name">
+              <div *ngIf="rentalForm.get('name')?.invalid && rentalForm.get('name')?.touched" class="text-danger small">
+                Name is required.
+              </div>
+            </div>
+  
+            <!-- Category -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Category</label>
+              <select class="form-select" formControlName="category">
+                <option value="Car">Car</option>
+                <option value="Van">Van</option>
+                <option value="Travel">Travel</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row">
+            <!-- Price Per Day -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Price Per Day (₹)</label>
+              <input type="number" class="form-control" formControlName="price" placeholder="Enter price">
+              <div *ngIf="rentalForm.get('price')?.invalid && rentalForm.get('price')?.touched" class="text-danger small">
+                Price must be greater than 0.
+              </div>
+            </div>
+  
+            <!-- Location -->
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Location</label>
+              <input type="text" class="form-control" formControlName="location" placeholder="Enter location">
+            </div>
+          </div>
+  
+          <!-- Upload Images -->
+          <div class="mb-3">
+            <label class="form-label">Upload Images</label>
+            <input type="file" class="form-control" (change)="onFileSelect($event)" multiple>
+          </div>
+  
+          <!-- Description -->
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" rows="3" formControlName="description" placeholder="Enter vehicle details"></textarea>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button type="submit" class="btn  w-50">
+              Submit Rental
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap Modal for Success Message -->
+  <div class="modal-backdrop" *ngIf="isModalVisible"></div>
+  <div class="modal fade show d-block" *ngIf="isModalVisible" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ modalTitle }}</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <p>{{ modalMessage }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,72 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+      <h3 class="text-center mb-3  fw-bold">Add Driver</h3>
+  
+      <form [formGroup]="driverForm" (ngSubmit)="addDriver()">
+        <div class="row">
+
+        <div class="col-md-6 mb-3">
+          <label for="name" class="form-label fw-semibold">Full Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter Full name">
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter Email">
+        </div>
+        </div>
+  
+        <div class="row">
+            <!-- Password -->
+            <div class="col-md-6 mb-3">
+              <label for="password" class="form-label fw-semibold">Password</label>
+              <input type="password" class="form-control shadow-sm" id="password" formControlName="password" placeholder="Create a password">
+            </div>
+    
+            <!-- Phone Number -->
+            <div class="col-md-6 mb-3">
+              <label for="phoneNo" class="form-label fw-semibold">Phone Number</label>
+              <input type="text" class="form-control shadow-sm" id="phoneNo" formControlName="phoneNo" placeholder="Enter phone number">
+            </div>
+        </div>
+  
+        <div class="row">
+            <!-- License Number -->
+            <div class="col-md-6 mb-3">
+              <label for="licenseNumber" class="form-label fw-semibold">License Number</label>
+              <input type="text" class="form-control shadow-sm" id="licenseNumber" formControlName="licenseNumber" placeholder="Enter license number">
+            </div>
+    
+            <!-- Vehicle Type -->
+            <div class="col-md-6 mb-3">
+              <label for="vehicleType" class="form-label fw-semibold">Vehicle Type</label>
+              <select class="form-select shadow-sm" id="vehicleType" formControlName="vehicleType">
+                <option value="" disabled selected>Select vehicle type</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Van">Van</option>
+                <option value="Truck">Truck</option>
+              </select>
+            </div>
+        </div>
+  
+         <!-- Driver Photo Upload -->
+        <div class="mb-3">
+          <label for="driverPhoto" class="form-label fw-semibold">Upload Driver Photo</label>
+          <input type="file" class="form-control shadow-sm" id="driverPhoto" (change)="onFileSelected($event)">
+        </div>
+  
+        <!-- Submit Button -->
+         <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-5 py-2 shadow-sm fw-bold" [disabled]="isLoading">
+          <span *ngIf="isLoading">
+            <i class="spinner-border spinner-border-sm me-2"></i> Adding Driver...
+          </span>
+          <span *ngIf="!isLoading">Add Driver</span>
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+  

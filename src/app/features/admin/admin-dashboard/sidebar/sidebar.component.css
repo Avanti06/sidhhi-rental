@@ -1,0 +1,81 @@
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #222; /* Dark background */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  padding-top: 20px;
+}
+
+/* Collapsed Sidebar */
+.sidebar-collapsed {
+  width: 60px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Sidebar Button */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Open Sidebar Button (When Collapsed) */
+.open-btn {
+  position: fixed;
+  top: 15px;
+  left: 10px;
+  background: #783cda;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 24px;
+  cursor: pointer;
+  display: none; /* Show only when sidebar is collapsed */
+}
+
+.sidebar-collapsed .open-btn {
+  display: block;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links li {
+  padding: 12px 15px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+/* Fix Hover Issue */
+.nav-links li a:hover {
+  background: #783cda; /* Light hover effect */
+}
+
+/* Active Link */
+.nav-links li a.router-link-active {
+  background: #783cda;
+}

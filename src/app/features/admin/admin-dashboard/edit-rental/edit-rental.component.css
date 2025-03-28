@@ -1,0 +1,27 @@
+.card {
+    max-width: 700px;
+    margin: auto;
+    border-radius: 15px;
+  }
+  
+  h2 {
+    color: #783cda;
+  }
+  
+  .form-control {
+    border-radius: 10px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  button {
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  

@@ -1,0 +1,46 @@
+<!-- Main Dashboard Content -->
+<div class="content p-4">
+  <h2 class="mb-4">Dashboard Overview</h2>
+
+  <div class="row">
+    <!-- Total Rentals -->
+    <div class="col-md-3">
+      <div class="card dashboard-card bg-success text-white" (click)="navigateTo('manage-vehicals')">
+        <div class="card-body">
+          <h5 class="card-title">Total Rentals</h5>
+          <p class="card-text">150</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Bookings -->
+    <div class="col-md-3">
+      <div class="card dashboard-card bg-warning text-white" (click)="navigateTo('bookings')">
+        <div class="card-body">
+          <h5 class="card-title">Active Bookings</h5>
+          <p class="card-text">45</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Earnings -->
+    <div class="col-md-3">
+      <div class="card dashboard-card bg-info text-white" (click)="navigateTo('earnings')">
+        <div class="card-body">
+          <h5 class="card-title">Earnings</h5>
+          <p class="card-text">$12,300</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Drivers -->
+    <div class="col-md-3">
+      <div class="card dashboard-card bg-primary text-white" (click)="navigateTo('view-drivers')">
+        <div class="card-body">
+          <h5 class="card-title">Total Drivers</h5>
+          <p class="card-text">05</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

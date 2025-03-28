@@ -1,0 +1,64 @@
+.container {
+    padding: 40px 20px;
+  }
+  
+  .intro-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f9fa;
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  .intro-text {
+    max-width: 50%;
+  }
+  .intro-img img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+  
+  .service-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: white;
+  }
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  .steps-section {
+    margin-top: 40px;
+  }
+  .steps-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .step-box {
+    width: 30%;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-gradient {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: white;
+    border-radius: 30px;
+    transition: 0.3s;
+  }
+  .btn-gradient:hover {
+    opacity: 0.8;
+  }
+  

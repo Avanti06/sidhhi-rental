@@ -1,0 +1,140 @@
+/* General Page Styling */
+.about-us-container {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  /* Header Styling */
+  .about-header {
+    background: linear-gradient(to right, #783cda, #c09df8);
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+  }
+  
+  .about-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .about-header span {
+    font-weight: bold;
+  }
+  
+  .about-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* About Content Section */
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .about-text {
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .about-text h2 {
+    color: #783cda;
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .about-image img {
+    width: 70%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* How It Works Section */
+  .how-it-works {
+    margin-top: 50px;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .how-it-works h2 {
+    color: #783cda;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .step {
+    width: 250px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .step h3 {
+    color: #783cda;
+    font-size: 1.5rem;
+  }
+  
+  /* Mission Section */
+  .mission {
+    margin-top: 50px;
+    padding: 30px;
+  }
+  
+  .mission h2 {
+    color: #783cda;
+    font-size: 2rem;
+  }
+  
+  .mission p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  /* Call-to-Action Section */
+  .cta {
+    margin-top: 50px;
+    padding: 30px;
+    background: #783cda;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .cta h2 {
+    font-size: 2rem;
+  }
+  
+  .cta p {
+    font-size: 1.2rem;
+  }
+  
+  .cta .btn {
+    background: white;
+    color: #783cda;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .cta .btn:hover {
+    background: #783cda;
+    color: white;
+  }
+  

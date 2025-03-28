@@ -1,0 +1,19 @@
+<div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let review of reviews; let i = index" [class.active]="i === 0">
+            <div class="review-card">
+                <p class="review-text">"{{ review.comment }}"</p>
+                <h5 class="review-author">- {{ review.name }}</h5>
+                <div class="rating">
+                    <span *ngFor="let star of getStars(review.rating)">&#9733;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+</div>

@@ -1,0 +1,19 @@
+.admin-container {
+  display:contents;
+  min-height: 100vh;
+}
+
+.admin-content {
+  flex-grow: 1;
+  margin-left: 250px; /* Space for sidebar */
+  padding: 20px;
+  background: #f8f9fa;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Adjust When Sidebar is Collapsed */
+@media (max-width: 768px) {
+  .admin-content {
+    margin-left: 60px;
+  }
+}
