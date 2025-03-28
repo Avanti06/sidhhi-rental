@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-4 mb-4" *ngFor="let driver of updatePagination()">
                 <div class="card shadow-lg p-3">
-                    <img [src]="'https://sidhhi-rental-backend.onrender.com/' + driver.driverPhoto" class="card-img-top driver-img" alt="Driver Photo">
+                    <img [src]="'https://sidhhi-rental-backend.onrender.com/api/' + driver.driverPhoto" class="card-img-top driver-img" alt="Driver Photo">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ driver.name }}</h5>
                         <p class="text-muted">{{ driver.vehicleType }}</p>
