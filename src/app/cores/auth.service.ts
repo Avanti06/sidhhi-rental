@@ -12,6 +12,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  
   private baseUrl = `${environment.API_URL}/auth`;
   
   private currentUserSubject: BehaviorSubject<any>;
