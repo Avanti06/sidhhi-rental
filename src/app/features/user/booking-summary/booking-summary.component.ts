@@ -3,12 +3,13 @@ import { PaymentService } from '../../../cores/services/payment.service';
 import { Router } from '@angular/router';
 import { BookingService } from '../../../cores/services/booking.service';
 import { environment } from '../../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 declare var Razorpay: any;
 
 @Component({
   selector: 'app-booking-summary',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './booking-summary.component.html',
   styleUrl: './booking-summary.component.css'
 })
@@ -151,5 +152,9 @@ createRazorpayOrder(bookingId: string) {
       alert("Error verifying payment.");
     }
   });
+}
+
+closeModal() {
+  this.close.emit();
 }
 }

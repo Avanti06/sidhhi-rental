@@ -19,7 +19,7 @@ declare var bootstrap: any;
 export class BookingFormComponent implements OnInit{
 
   bookingForm: FormGroup;
-  showSummaryModal = false;
+  showSummaryModal:boolean  = false;
   pricePerDay: number = 0;
   selectedRental: any; // Rental data from parent component
   isRoundTrip: boolean = false;
@@ -75,6 +75,8 @@ export class BookingFormComponent implements OnInit{
     alert("Please fill all details");
   }
 }
+
+
 
 get bookingSummaryData() {
   return {

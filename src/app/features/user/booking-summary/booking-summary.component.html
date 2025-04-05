@@ -1,19 +1,25 @@
-<div class="modal-container">
+<div class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <h2>Booking Summary</h2>
-      
-      <p><strong>Pickup:</strong> {{ bookingData.pickupLocation }}</p>
-      <p><strong>Drop:</strong> {{ bookingData.dropLocation }}</p>
-      <p><strong>Trip Type:</strong> {{ bookingData.tripType }}</p>
-      <p><strong>Start Date:</strong> {{ bookingData.startDate }}</p>
-      <p><strong>End Date:</strong> {{ bookingData.endDate }}</p>
-      <p><strong>Per Day Price:</strong> ₹{{ pricePerDay }}</p>
-      <p><strong>Total Amount:</strong> ₹{{ totalAmount }}</p>
-      <p><strong>Booking Amount (20%):</strong> ₹{{ bookingAmount }}</p>
-      <p><strong>Remaining Amount:</strong> ₹{{ remainingAmount }}</p>
-  
-      <button class="btn btn-success" (click)="proceedToPayment()">Proceed to Pay</button>
-      <button class="btn btn-danger" (click)="close.emit()">Cancel</button>
+      <div class="modal-header text-white">
+        <h5 class="modal-title">Booking Summary</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Pickup:</strong> {{ bookingData.pickupLocation }}</p>
+        <p><strong>Drop:</strong> {{ bookingData.dropLocation }}</p>
+        <p><strong>Trip Type:</strong> {{ bookingData.tripType }}</p>
+        <p><strong>Start Date:</strong> {{ bookingData.startDate }}</p>
+        <p *ngIf="bookingData.endDate"><strong>End Date:</strong> {{ bookingData.endDate }}</p>
+        <p><strong>Per Day Price:</strong> <span class="text-success">₹{{ pricePerDay }}</span></p>
+        <p><strong>Total Amount:</strong> <span class="text-success">₹{{ totalAmount }}</span></p>
+        <p><strong>Booking Amount (20%):</strong> <span class="text-warning">₹{{ bookingAmount }}</span></p>
+        <p><strong>Remaining Amount:</strong> <span class="text-danger">₹{{ remainingAmount }}</span></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" (click)="proceedToPayment()">Proceed to Pay</button>
+        <button class="btn btn-danger" (click)="closeModal()">Cancel</button>
+      </div>
     </div>
   </div>
-  
+</div>

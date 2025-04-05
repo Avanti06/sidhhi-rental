@@ -1,4 +1,29 @@
-.card {
-    border-radius: 10px;
-  }
-  
+.container {
+  max-width: 600px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.container h2 {
+  color: #783cda;
+}
+
+.form-control, .form-select {
+  border-radius: 8px;
+}
+.btn-primary {
+  background-color: #783cda;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.btn-primary:hover {
+  background-color: #783cda;
+}
+.modal-content {
+  border-radius: 10px;
+}
+.modal-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

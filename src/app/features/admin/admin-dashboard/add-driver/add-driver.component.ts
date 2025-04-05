@@ -45,18 +45,25 @@ export class AddDriverComponent {
 
     this.isLoading = true;
     const formData = new FormData();
+
     Object.keys(this.driverForm.value).forEach(key => {
       formData.append(key, this.driverForm.value[key]);
     });
     formData.append('image', this.selectedFile);
 
+    // Debugging formData
+  for (let pair of formData.entries()) {
+    console.log(pair[0] + ':', pair[1]);
+  }
+  
     const token = localStorage.getItem('token') || ''; // Get admin token
 
+    
     this.authService.addDriver(formData).subscribe(
       (response) => {
+        console.log("driver response :", response);
         alert('Driver added successfully!');
         this.driverForm.reset();
-        this.selectedFile = null;
       },
       (error) => {
         alert(error.error.message || 'Failed to add driver');

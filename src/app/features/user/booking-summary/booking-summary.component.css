@@ -1,0 +1,20 @@
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  .modal-body p {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .modal-header {
+    background-color: #783cda;
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-success, .btn-danger {
+    padding: 10px 20px;
+    font-size: 16px;
+  }

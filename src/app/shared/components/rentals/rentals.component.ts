@@ -34,6 +34,7 @@ export class RentalsComponent {
   fetchRentals() {
     this.rentalService.getAllRentalsForCustomers().subscribe(
       (data) => {
+        console.log("Fetched Rentals:", data);
         this.rentals = data;
       },
       (error) => {

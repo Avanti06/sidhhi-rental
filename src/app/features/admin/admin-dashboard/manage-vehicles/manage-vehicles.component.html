@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let rental of rentals">
       <div class="card rental-card shadow-sm">
-        <img [src]="'http://localhost:5000/' + rental.images" class="card-img-top rental-image" alt="{{ rental.name }}">
+        <img [src]="rental.images" class="card-img-top rental-image" alt="{{ rental.name }}">
 
         <div class="card-body">
           <h5 class="card-title">{{ rental.name }}</h5>

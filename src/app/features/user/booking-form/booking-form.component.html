@@ -1,10 +1,10 @@
-<div class="container mt-4">
-  <h2>Book Your Vehicle</h2>
+<div class="container mt-5 p-4 shadow-lg rounded bg-white">
+  <h2 class="text-center  mb-4">Book Your Vehicle</h2>
   <form [formGroup]="bookingForm" (ngSubmit)="openBookingSummary()">
     
     <div class="mb-3">
-      <label>Trip Type</label>
-      <select formControlName="tripType" class="form-control">
+      <label class="form-label fw-bold">Trip Type</label>
+      <select formControlName="tripType" class="form-select">
         <option value="one-way">One-Way</option>
         <option value="round-trip">Round Trip</option>
         <option value="drop-only">Drop Only</option>
@@ -12,40 +12,55 @@
     </div>
 
     <div class="mb-3">
-      <label>Pickup Location</label>
-      <input type="text" formControlName="pickupLocation" class="form-control">
+      <label class="form-label fw-bold">Pickup Location</label>
+      <input type="text" formControlName="pickupLocation" class="form-control" placeholder="Enter Pickup Location">
     </div>
 
     <div class="mb-3">
-      <label>Drop Location</label>
-      <input type="text" formControlName="dropLocation" class="form-control">
+      <label class="form-label fw-bold">Drop Location</label>
+      <input type="text" formControlName="dropLocation" class="form-control" placeholder="Enter Drop Location">
     </div>
 
-    <div class="mb-3">
-      <label>Start Date</label>
-      <input type="date" formControlName="startDate" class="form-control">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">Start Date</label>
+        <input type="date" formControlName="startDate" class="form-control">
+      </div>
+      
+      <div class="col-md-6 mb-3" *ngIf="bookingForm.controls['tripType'].value === 'round-trip'">
+        <label class="form-label fw-bold">End Date</label>
+        <input type="date" formControlName="endDate" class="form-control">
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label>End Date</label>
-      <input type="date" formControlName="endDate" *ngIf="bookingForm.controls['tripType'].value === 'round-trip'" class="form-control">
+    <div class="mb-3 text-center">
+      <label class="fw-bold">Price per Day</label>
+      <h4 class="text-success">₹{{ pricePerDay }}</h4>
     </div>
-
-    <div class="mb-3">
-      <label>Price per day</label>
-      <h4>perDayPrice: ₹{{ pricePerDay }}</h4> 
+    
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary px-4 py-2">Proceed to Summary</button>
     </div>
-    <button type="submit" class="btn btn-primary">Proceed to Summary</button>
   </form>
 </div>
 
 <!-- Booking Summary Modal -->
-<div *ngIf="showSummaryModal" class="summary-section">
-<app-booking-summary 
-  *ngIf="showSummaryModal"
-  [bookingData]="bookingSummaryData"
-  [pricePerDay]="pricePerDay">
-</app-booking-summary>
-<button (click)="closeSummaryModal()">Close</button>
+<div *ngIf="showSummaryModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Booking Summary</h5>
+        <button type="button" class="btn-close" (click)="closeSummaryModal()"></button>
+      </div>
+      <div class="modal-body">
+        <app-booking-summary 
+          [bookingData]="bookingSummaryData" 
+          [pricePerDay]="pricePerDay">
+        </app-booking-summary>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeSummaryModal()">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-
