@@ -20,6 +20,8 @@ import { ViewDriversComponent } from './features/admin/admin-dashboard/view-driv
 import { BookingSummaryComponent } from './features/user/booking-summary/booking-summary.component';
 import { BookingFormComponent } from './features/user/booking-form/booking-form.component';
 import { MyBookingComponent } from './features/user/my-booking/my-booking.component';
+import { combineLatest } from 'rxjs';
+import { Component } from '@angular/core';
 
 
 export const routes: Routes = [
@@ -55,8 +57,8 @@ export const routes: Routes = [
     { 
         path: 'user-dashboard',
         component: UserDashboardComponent, 
-         canActivate: [authGuard],
-         data: { roles: ['user'] },
+        canActivate: [authGuard],
+        data: { roles: ['user'] },
      },
      {
         path: 'book-rental/:id',
@@ -71,7 +73,7 @@ export const routes: Routes = [
         title: 'book rental summary page'
      },
      {
-        path: 'bookings',
+        path: 'my-bookings',
         component: MyBookingComponent,
         canActivate: [authGuard],
         title: 'my booking page'

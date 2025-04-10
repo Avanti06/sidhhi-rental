@@ -1,44 +1,81 @@
-<!-- Main Dashboard Content -->
 <div class="content p-4">
   <h2 class="mb-4">Dashboard Overview</h2>
 
-  <div class="row">
+  <div class="row g-4">
     <!-- Total Rentals -->
     <div class="col-md-3">
-      <div class="card dashboard-card bg-success text-white" (click)="navigateTo('manage-vehicals')">
-        <div class="card-body">
-          <h5 class="card-title">Total Rentals</h5>
-          <p class="card-text">150</p>
+      <div class="card dashboard-card border-0 shadow-sm text-white bg-gradient-success" (click)="navigateTo('manage-vehicals')">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-car-front-fill fs-1 me-3"></i>
+          <div>
+            <h6 class="mb-0">Total Rentals</h6>
+            <h4 class="fw-bold">150</h4>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Active Bookings -->
     <div class="col-md-3">
-      <div class="card dashboard-card bg-warning text-white" (click)="navigateTo('bookings')">
-        <div class="card-body">
-          <h5 class="card-title">Active Bookings</h5>
-          <p class="card-text">45</p>
+      <div class="card dashboard-card border-0 shadow-sm text-white bg-gradient-warning" (click)="navigateTo('bookings')">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-calendar-check-fill fs-1 me-3"></i>
+          <div>
+            <h6 class="mb-0">Active Bookings</h6>
+            <h4 class="fw-bold">45</h4>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Earnings -->
     <div class="col-md-3">
-      <div class="card dashboard-card bg-info text-white" (click)="navigateTo('earnings')">
-        <div class="card-body">
-          <h5 class="card-title">Earnings</h5>
-          <p class="card-text">$12,300</p>
+      <div class="card dashboard-card border-0 shadow-sm text-white bg-gradient-info" (click)="navigateTo('earnings')">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-currency-dollar fs-1 me-3"></i>
+          <div>
+            <h6 class="mb-0">Earnings</h6>
+            <h4 class="fw-bold">$12,300</h4>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Total Drivers -->
     <div class="col-md-3">
-      <div class="card dashboard-card bg-primary text-white" (click)="navigateTo('view-drivers')">
+      <div class="card dashboard-card border-0 shadow-sm text-white bg-gradient-primary" (click)="navigateTo('view-drivers')">
+        <div class="card-body d-flex align-items-center">
+          <i class="bi bi-person-badge-fill fs-1 me-3"></i>
+          <div>
+            <h6 class="mb-0">Total Drivers</h6>
+            <h4 class="fw-bold">05</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings Chart & Recent Activity -->
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light fw-bold">Earnings Trend</div>
         <div class="card-body">
-          <h5 class="card-title">Total Drivers</h5>
-          <p class="card-text">05</p>
+          <!-- Insert chart here -->
+          <canvas id="earningsChart" height="100"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light fw-bold">Recent Activity</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">🚗 New rental added by Admin</li>
+            <li class="list-group-item">📅 Booking made by Ramesh</li>
+            <li class="list-group-item">👤 New driver registered</li>
+            <li class="list-group-item">💰 Payment received from John</li>
+          </ul>
         </div>
       </div>
     </div>

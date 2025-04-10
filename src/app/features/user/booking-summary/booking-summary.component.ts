@@ -142,7 +142,7 @@ createRazorpayOrder(bookingId: string) {
       if (res.success) {
         alert("Payment Successful!");
         this.close.emit();
-        this.router.navigate(['/bookings']);  // Redirect to bookings page
+        this.router.navigate(['/my-bookings']);  // Redirect to bookings page
       } else {
         alert("Payment Verification Failed!");
       }

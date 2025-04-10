@@ -1,23 +1,82 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Customer</th>
-      <th>Vehicle</th>
-      <th>Date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (booking of bookings; track booking.id) {
-      <tr>
-        <td>{{ booking.customer }}</td>
-        <td>{{ booking.vehicle }}</td>
-        <td>{{ booking.date }}</td>
-        <td>
-          <button class="btn btn-sm btn-warning">Edit</button>
-          <button class="btn btn-sm btn-danger">Delete</button>
-        </td>
-      </tr>
-    }
-  </tbody>
-</table>
+<div class="container mt-4">
+  <h3 class="mb-4 text-primary">🚗 Upcoming Bookings</h3>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Loading bookings...</p>
+  </div>
+
+  <div *ngIf="!loading && bookings.length > 0" class="table-responsive">
+    <table class="table table-hover align-middle shadow-sm border rounded">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>User</th>
+          <th>Email</th>
+          <th>Vehicle</th>
+          <th>Trip Type</th>
+          <th>Pickup</th>
+          <th>Drop</th>
+          <th>Start Date</th>
+          <th>Status</th>
+          <th>Payment</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let booking of bookings">
+          <td>{{ booking.userId?.name }}</td>
+          <td>{{ booking.userId?.email }}</td>
+          <td>{{ booking.vehicleId.name }}</td>
+          <td><span class="badge bg-info text-dark">{{ booking.tripType }}</span></td>
+          <td>{{ booking.pickupLocation }}</td>
+          <td>{{ booking.dropLocation }}</td>
+          <td>{{ booking.startDate | date: 'mediumDate' }}</td>
+
+          <!-- Booking Status -->
+          <td>
+            <span 
+              [ngClass]="{
+                'badge bg-secondary': booking.status === 'pending',
+                'badge bg-success': booking.status === 'confirmed',
+                'badge bg-danger': booking.status === 'rejected'
+              }">
+              {{ booking.status }}
+            </span>
+          </td>
+
+          <!-- Payment Status -->
+          <td>
+            <span 
+              [ngClass]="{
+                'badge bg-warning text-dark': booking.paymentStatus === 'pending',
+                'badge bg-success': booking.paymentStatus === 'confirmed'
+              }">
+              {{ booking.paymentStatus }}
+            </span>
+          </td>
+
+          <!-- Action Buttons -->
+          <td>
+            <button 
+              *ngIf="booking.status === 'pending' && booking.paymentStatus === 'confirmed'" 
+              (click)="approveBooking(booking._id)" 
+              class="btn btn-sm btn-success me-2">
+              Approve
+            </button>
+
+            <button 
+              *ngIf="booking.status === 'pending'" 
+              (click)="rejectBooking(booking._id)" 
+              class="btn btn-sm btn-outline-danger">
+              Reject
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && bookings.length === 0" class="alert alert-info mt-3">
+    No upcoming bookings found.
+  </div>
+</div>

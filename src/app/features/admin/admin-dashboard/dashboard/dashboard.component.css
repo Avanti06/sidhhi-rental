@@ -1,11 +1,67 @@
+/* Dashboard Card Styles */
 .dashboard-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+  min-height: 120px;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-success {
+  background: linear-gradient(135deg, #28a745, #218838);
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #ffc107, #e0a800);
+}
+
+.bg-gradient-info {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #007bff, #0069d9);
+}
+
+/* Earnings Chart */
+#earningsChart {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Responsive Fix for Dashboard Cards */
+@media (max-width: 768px) {
+  .dashboard-card {
+    min-height: 100px;
   }
-  
-  .dashboard-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  .dashboard-card i {
+    font-size: 1.5rem !important;
+    margin-right: 0.75rem;
   }
-  
+
+  .dashboard-card h4 {
+    font-size: 1.2rem;
+  }
+
+  .dashboard-card h6 {
+    font-size: 0.85rem;
+  }
+}
+
+/* Card Shadow Utility */
+.card.shadow-sm {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Recent Activity List */
+.card .list-group-item {
+  font-size: 0.95rem;
+  border: none;
+  padding: 0.6rem 1rem;
+}

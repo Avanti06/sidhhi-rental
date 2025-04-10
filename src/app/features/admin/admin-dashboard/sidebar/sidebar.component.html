@@ -1,19 +1,80 @@
-<!-- Sidebar Container -->
-<nav class="sidebar" [class.sidebar-collapsed]="isCollapsed">
-  <div class="sidebar-header">
-    <h4 *ngIf="!isCollapsed">Admin Dashboard</h4>
-    <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
-  </div>
+<!-- Admin Layout Container -->
+<div class="admin-layout">
+    <!-- Sidebar Container -->
+    <nav class="sidebar shadow-sm" [class.sidebar-collapsed]="isCollapsed" [class.mobile-open]="isMobileOpen">
+      <div class="sidebar-header">
+        <div class="d-flex align-items-center">
+          <h4 class="mb-0 sidebar-title" *ngIf="!isCollapsed">Admin Dashboard</h4>
+        </div>
+        <button class="toggle-btn" (click)="toggleSidebar()" title="Toggle Sidebar">
+          <i class="bi" [ngClass]="isCollapsed ? 'bi-arrow-right-circle' : 'bi-arrow-left-circle'"></i>
+        </button>
+      </div>
+      
+      <div class="sidebar-content">
+        <ul class="nav-links list-unstyled">
+          <li class="nav-item">
+            <a routerLink="/admin-dashboard/dashboard" routerLinkActive="active" class="nav-link">
+              <i class="bi bi-speedometer2"></i>
+              <span class="link-text" [class.d-none]="isCollapsed">Dashboard</span>
+              <span class="tooltip" *ngIf="isCollapsed">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/admin-dashboard/add-rental" routerLinkActive="active" class="nav-link">
+              <i class="bi bi-plus-circle"></i>
+              <span class="link-text" [class.d-none]="isCollapsed">Add Rental</span>
+              <span class="tooltip" *ngIf="isCollapsed">Add Rental</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/admin-dashboard/manage-vehicals" routerLinkActive="active" class="nav-link">
+              <i class="bi bi-car-front"></i>
+              <span class="link-text" [class.d-none]="isCollapsed">Manage Vehicles</span>
+              <span class="tooltip" *ngIf="isCollapsed">Manage Vehicles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/admin-dashboard/manage-bookings" routerLinkActive="active" class="nav-link">
+              <i class="bi bi-calendar-check"></i>
+              <span class="link-text" [class.d-none]="isCollapsed">Manage Bookings</span>
+              <span class="tooltip" *ngIf="isCollapsed">Manage Bookings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/admin-dashboard/add-driver" routerLinkActive="active" class="nav-link">
+              <i class="bi bi-person-plus"></i>
+              <span class="link-text" [class.d-none]="isCollapsed">Add Driver</span>
+              <span class="tooltip" *ngIf="isCollapsed">Add Driver</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/admin-dashboard/earnings" routerLinkActive="active" class="nav-link">
+              <i class="bi bi-graph-up-arrow"></i>
+              <span class="link-text" [class.d-none]="isCollapsed">Earnings</span>
+              <span class="tooltip" *ngIf="isCollapsed">Earnings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-footer" *ngIf="!isCollapsed">
+        <div class="user-info d-flex align-items-center">
+          <div class="user-avatar me-2"></div>
+          <div>
+            <p class="mb-0 fw-bold">Admin User</p>
+            <small class="text-muted">admin&#64;sidhhi.com</small>
+          </div>
+        </div>
+        <div class="mt-2 d-flex">
+          <a href="#" class="btn btn-sm btn-outline-light me-2">Profile</a>
+          <a href="#" class="btn btn-sm btn-outline-light">Logout</a>
+        </div>
+      </div>
+    </nav>
 
-  <ul class="nav-links" *ngIf="!isCollapsed || isMobileView">
-    <li><a routerLink="/admin-dashboard/dashboard">Dashboard</a></li>
-    <li><a routerLink="/admin-dashboard/add-rental">Add Rental</a></li>
-    <li><a routerLink="/admin-dashboard/manage-vehicals">Manage Vehicles</a></li>
-    <li><a routerLink="/admin-dashboard/manage-bookings">Manage Bookings</a></li>
-    <li><a routerLink="/admin-dashboard/add-driver">Add Driver</a></li>
-    <li><a routerLink="/admin-dashboard/earnings">Earnings</a></li>
-  </ul>
-</nav>
-
-<!-- Floating Open Button (Visible when sidebar is collapsed) -->
-<button class="open-btn" *ngIf="isCollapsed" (click)="toggleSidebar()">☰</button>
+    <div class="main-content flex-grow-1 p-3">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+  

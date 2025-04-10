@@ -44,24 +44,7 @@ export class HomeComponent {
       price: 1800,
       image: 'assets/images/tata.jpeg'
     },
-    {
-      name: 'Hyundai Creta',
-      location: 'Mumbai',
-      price: 1500,
-      image: 'assets/images/creta.jpeg'
-    },
-    {
-      name: 'Maruti Swift',
-      location: 'Delhi',
-      price: 1200,
-      image: 'assets/images/swift-dezier.jpeg'
-    },
-    {
-      name: 'Honda City',
-      location: 'Bangalore',
-      price: 1800,
-      image: 'assets/images/honda-city.jpeg'
-    }
+    
   ]
 
 
@@ -95,18 +78,8 @@ export class HomeComponent {
       price: 9000,
       image: 'assets/images/travel5.jpeg'
     },
-    {
-      name: 'DNR',
-      location: 'Wardha',
-      price: 9000,
-      image: 'assets/images/travel5.jpeg'
-    }, {
-      name: 'DNR',
-      location: 'Wardha',
-      price: 9000,
-      image: 'assets/images/travel5.jpeg'
-    }
 
   ]
+
 
 }

@@ -1,52 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-body {
-  font-family: 'Poppins', sans-serif;
-  padding-top: 60px;
-}
-
-/* Navbar Styling */
 .navbar {
-  background: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px;
-}
-
-.navbar .navbar-brand {
-  font-size: 24px;
-  font-weight: bold;
-  color: #783cda;
-}
-
-.navbar .nav-link {
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
   transition: all 0.3s ease;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
   color: #783cda;
-  border-bottom: 2px solid #783cda;
+  transition: all 0.2s ease;
 }
 
-/* Button Styling */
-.navbar .btn {
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.nav-link {
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #783cda !important;
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: #783cda !important;
+  font-weight: 600;
+}
+
+.btn {
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.alert {
+  border-radius: 10px;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    padding: 1rem 0;
+  }
+  
+  .nav-item {
+    margin: 0.25rem 0;
+  }
+  
+  .nav-link {
+    display: inline-block;
+  }
+  
+  .navbar-collapse {
+    padding: 1rem 0;
+  }
+}
+
+/* Animation for logout message */
+.alert-success {
+  animation: fadeInDown 0.5s ease forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.btn-primary{
   background-color: #783cda;
-  color: #fff;
-  border-radius: 20px;
-  padding: 6px 15px;
-}
-
-.navbar .btn:hover {
-  background-color: #5a28b2;
-}
-
-/* Profile Dropdown */
-.dropdown-menu {
-  position: absolute;
-  right: 0;
-  min-width: 180px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }

@@ -1,1 +1,51 @@
-<p>my-booking works!</p>
+<div class="container mt-5 mb-5 my-bookings-wrapper">
+    <h2 class="text-center mb-5 fw-bold">My Bookings</h2>
+  
+    <div *ngIf="bookings.length === 0" class="text-center text-muted fs-5">
+      <p><i class="bi bi-calendar-x fs-3"></i><br />You haven't made any bookings yet.</p>
+    </div>
+  
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div *ngFor="let booking of bookings" class="col">
+        <div class="card booking-card shadow-sm h-100 border-0 rounded-4">
+          <div class="card-body">
+            <h5 class="card-title text-primary fw-bold mb-3">{{ booking.vehicleId.name }}</h5>
+  
+            <div class="booking-info mb-2">
+              <p class="mb-1"><strong>Trip Type:</strong> {{ booking.tripType }}</p>
+              <p class="mb-1">
+                <strong>From:</strong> {{ booking.startDate | date: 'mediumDate' }} <br />
+                <strong>To:</strong> {{ booking.endDate | date: 'mediumDate' }}
+              </p>
+              <p class="mb-1"><strong>Pickup:</strong> {{ booking.pickupLocation }}</p>
+              <p class="mb-1"><strong>Drop:</strong> {{ booking.dropLocation }}</p>
+            </div>
+  
+            <div class="status-tags mb-3">
+              <span class="badge bg-success me-1" *ngIf="booking.status === 'confirmed'"><strong>Booking Status:</strong> Confirmed</span>
+              <span class="badge bg-warning text-dark me-1" *ngIf="booking.status === 'pending'"><strong>Booking Status:</strong> Pending</span>
+              <span class="badge bg-info text-dark me-1" *ngIf="booking.status === 'completed'"><strong>Booking Status:</strong> Completed</span>
+              <span class="badge bg-secondary" *ngIf="booking.paymentStatus === 'pending'"><strong>Payment Status:</strong> Payment Pending</span>
+              <span class="badge bg-success me-1 " *ngIf="booking.paymentStatus === 'confirmed'"><strong>Payment Status:</strong> Confirmed</span>
+            </div>
+  
+            <div class="payment-info border-top pt-3">
+              <p class="mb-1"><strong>Total:</strong> ₹{{ booking.totalAmount }}</p>
+              <p class="mb-1"><strong>Paid:</strong> ₹{{ booking.bookingAmount }}</p>
+              <p class="mb-1 text-danger fw-semibold" *ngIf="booking.remainingAmount > 0">
+                <strong>Remaining:</strong> ₹{{ booking.remainingAmount }}
+              </p>
+  
+              <button
+                *ngIf="booking.paymentStatus === 'confirmed' && booking.remainingAmount > 0"
+                class="btn btn-sm btn-outline-primary mt-2 w-100"
+                (click)="payRemaining(booking)">
+                Pay Remaining ₹{{ booking.remainingAmount }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Booking } from '../../features/models/booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,33 @@ export class BookingService {
   // ✅ Verify payment
   verifyPayment(paymentData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/verify-payment`, paymentData);
+  }
+
+  getUpcomingBookings(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get(`${this.baseUrl}/admin/upcoming`, { headers });
+  }
+
+  getMyBookings(): Observable<Booking[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    
+    return this.http.get<Booking[]>(`${this.baseUrl}/my-booking`, { headers });
+  }
+
+  approveBooking(bookingId: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.baseUrl}/approve/${bookingId}`, {} , { headers });
+  }
+  
+  rejectBooking(bookingId: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.baseUrl}/reject/${bookingId}`, {} , { headers });
   }
 }

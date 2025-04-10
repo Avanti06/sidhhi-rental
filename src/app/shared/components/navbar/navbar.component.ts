@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from '../../../features/auth/login/login.component';
 import { RegisterComponent } from '../../../features/auth/register/register.component';
 import { AboutusComponent } from '../aboutus/aboutus.component';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../../cores/auth.service';
 import { ProfileComponent } from '../../../features/user/profile/profile.component';
 
 declare var bootstrap: any;
 @Component({
   selector: 'app-navbar',
-  imports: [ProfileComponent,CommonModule,LoginComponent,RegisterComponent,RouterLink],
+  imports: [ProfileComponent,CommonModule,LoginComponent,RegisterComponent,RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

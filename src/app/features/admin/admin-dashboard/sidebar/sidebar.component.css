@@ -1,81 +1,156 @@
-/* Sidebar Styles */
-.sidebar {
-  width: 250px;
-  height: 100vh;
-  background-color: #222; /* Dark background */
-  color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  transition: width 0.3s ease;
-  padding-top: 20px;
-}
-
-/* Collapsed Sidebar */
-.sidebar-collapsed {
-  width: 60px;
-}
-
-.sidebar-header {
+.admin-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-}
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f8f9fa;
 
-/* Sidebar Button */
-.toggle-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-}
+  .sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-/* Open Sidebar Button (When Collapsed) */
-.open-btn {
-  position: fixed;
-  top: 15px;
-  left: 10px;
-  background: #783cda;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  font-size: 24px;
-  cursor: pointer;
-  display: none; /* Show only when sidebar is collapsed */
-}
+    &.sidebar-collapsed {
+      width: 80px;
 
-.sidebar-collapsed .open-btn {
-  display: block;
-}
+      .sidebar-title {
+        display: none;
+      }
 
-/* Navigation Links */
-.nav-links {
-  list-style: none;
-  padding: 0;
-}
+      .link-text {
+        display: none;
+      }
 
-.nav-links li {
-  padding: 12px 15px;
-}
+      .tooltip {
+        display: inline-block;
+        background: #000;
+        color: #fff;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        position: absolute;
+        left: 100%;
+        white-space: nowrap;
+        margin-left: 5px;
+      }
+    }
 
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
+    .sidebar-header {
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #212529;
+      border-bottom: 1px solid #495057;
 
-/* Fix Hover Issue */
-.nav-links li a:hover {
-  background: #783cda; /* Light hover effect */
-}
+      .sidebar-logo {
+        width: 32px;
+        height: 32px;
+        background-color: #adb5bd;
+        border-radius: 50%;
+      }
 
-/* Active Link */
-.nav-links li a.router-link-active {
-  background: #783cda;
+      .toggle-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+    }
+
+    .sidebar-content {
+      flex-grow: 1;
+      padding: 1rem 0;
+
+      .nav-links {
+        padding-left: 0;
+
+        .nav-item {
+          position: relative;
+
+          .nav-link {
+            display: flex;
+            align-items: center;
+            color: #ced4da;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            transition: background 0.3s;
+
+            &:hover,
+            &.active {
+              background-color: #495057;
+              color: #fff;
+            }
+
+            i {
+              margin-right: 10px;
+              font-size: 1.2rem;
+            }
+
+            .tooltip {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .sidebar-footer {
+      padding: 1rem;
+      background-color: #212529;
+      border-top: 1px solid #495057;
+
+      .user-info {
+        .user-avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: #adb5bd;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+
+        small {
+          font-size: 0.75rem;
+        }
+      }
+
+      .btn {
+        font-size: 0.75rem;
+      }
+    }
+
+    &.mobile-open {
+      position: absolute;
+      z-index: 999;
+      height: 100%;
+    }
+  }
+
+  .main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      position: absolute;
+      left: -100%;
+      z-index: 999;
+      height: 100%;
+      transition: left 0.3s;
+
+      &.mobile-open {
+        left: 0;
+      }
+    }
+  }
 }

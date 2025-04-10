@@ -1,0 +1,38 @@
+.my-bookings-wrapper {
+  h2 {
+    color: #2c3e50;
+  }
+
+  .booking-card {
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #0d6efd;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+    }
+
+    .booking-info {
+      font-size: 0.95rem;
+    }
+
+    .status-tags .badge {
+      font-size: 0.8rem;
+      padding: 0.4em 0.6em;
+      border-radius: 0.5rem;
+    }
+
+    .payment-info {
+      font-size: 0.95rem;
+
+      button {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
