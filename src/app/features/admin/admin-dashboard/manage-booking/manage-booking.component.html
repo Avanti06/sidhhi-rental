@@ -57,6 +57,7 @@
 
           <!-- Action Buttons -->
           <td>
+            <div>
             <button 
               *ngIf="booking.status === 'pending' && booking.paymentStatus === 'confirmed'" 
               (click)="approveBooking(booking._id)" 
@@ -70,6 +71,28 @@
               class="btn btn-sm btn-outline-danger">
               Reject
             </button>
+            </div>
+
+            <!-- Assign Driver Dropdown (only if booking is approved & no driver assigned) -->
+  <div *ngIf="booking.status === 'confirmed' && !booking.assignedDriver">
+    <select class="form-select form-select-sm mt-1" [(ngModel)]="selectedDriver[booking._id]">
+      <option [ngValue]="null">-- Select Driver --</option>
+      <option *ngFor="let driver of drivers" [ngValue]="driver._id">{{ driver.name }} - {{ driver.phoneNo }}</option>
+    </select>
+
+    <button 
+      class="btn btn-sm btn-primary mt-1" 
+      (click)="assignDriver(booking._id)">
+      Assign Driver
+    </button>
+  </div>
+
+   <!-- Show Assigned Driver Info -->
+   <div *ngIf="booking.assignedDriver">
+    <span class="text-success fw-semibold">
+      {{ booking.assignedDriver.name }} ({{ booking.assignedDriver.phoneNo }})
+    </span>
+  </div>
           </td>
         </tr>
       </tbody>

@@ -9,7 +9,8 @@ import { environment } from '../../../environments/environment';
 export class DriverService {
  
   private apiUrl = `${environment.API_URL}/driver`;
-  
+
+  private driverUrl = `${environment.API_URL}/admin`;
   constructor(private http: HttpClient) { }
 
   getAllDrivers(): Observable<any> {
@@ -26,5 +27,13 @@ export class DriverService {
       headers: { Authorization: `Bearer ${token}` }
     });
   }
+
+  assignDriver(bookingId: string, driverId: string) {
+    const token = localStorage.getItem('token');
+    return this.http.put(`${this.driverUrl}/assign-driver/${bookingId}`, { driverId } , { 
+      headers : { Authorization: `Bearer ${token}`}
+    });
+  }
+  
   
 }

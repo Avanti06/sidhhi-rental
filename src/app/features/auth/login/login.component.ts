@@ -91,10 +91,11 @@ messageClass: string = '';
 
               if (role === 'admin') {
                 dashboardRoute = '/admin-dashboard';
-                
               } else if (role === 'provider') {
                 dashboardRoute = '/provider-dashboard';
-              } else {
+              } else if (role === 'driver') {
+                dashboardRoute = '/driver-dashboard';
+              }else {
                 dashboardRoute = '/';
               }
 

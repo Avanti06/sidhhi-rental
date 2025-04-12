@@ -22,6 +22,8 @@ import { BookingFormComponent } from './features/user/booking-form/booking-form.
 import { MyBookingComponent } from './features/user/my-booking/my-booking.component';
 import { combineLatest } from 'rxjs';
 import { Component } from '@angular/core';
+import { ViewAllAssignedBookingComponent } from './features/admin/admin-dashboard/view-all-assigned-booking/view-all-assigned-booking.component';
+import { DriverDashboardComponent } from './features/driver/driver-dashboard/driver-dashboard.component';
 
 
 export const routes: Routes = [
@@ -78,8 +80,11 @@ export const routes: Routes = [
         canActivate: [authGuard],
         title: 'my booking page'
      },
-     
-     
+     {
+        path: 'driver-dashboard',
+        component: DriverDashboardComponent,
+        title: 'driver dashboard'
+     },
     { 
         path: 'admin-dashboard',
          component: AdminDashboardComponent,
@@ -113,6 +118,10 @@ export const routes: Routes = [
             { 
                 path: 'manage-bookings', 
                 component: ManageBookingComponent 
+            },
+            {
+                path: 'view-all-assigned-booking',
+                component: ViewAllAssignedBookingComponent
             },
             {
                 path: 'manage-vehicals',

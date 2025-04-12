@@ -24,6 +24,8 @@
             <div class="status-tags mb-3">
               <span class="badge bg-success me-1" *ngIf="booking.status === 'confirmed'"><strong>Booking Status:</strong> Confirmed</span>
               <span class="badge bg-warning text-dark me-1" *ngIf="booking.status === 'pending'"><strong>Booking Status:</strong> Pending</span>
+              <span class="badge bg-warning text-dark me-1" *ngIf="booking.status === 'rejected'"><strong>Booking Status:</strong> Rejected</span>
+              <span class="badge bg-warning text-dark me-1" *ngIf="booking.status === 'assignedDriver'"><strong>Booking Status:</strong> Assigned Driver</span>
               <span class="badge bg-info text-dark me-1" *ngIf="booking.status === 'completed'"><strong>Booking Status:</strong> Completed</span>
               <span class="badge bg-secondary" *ngIf="booking.paymentStatus === 'pending'"><strong>Payment Status:</strong> Payment Pending</span>
               <span class="badge bg-success me-1 " *ngIf="booking.paymentStatus === 'confirmed'"><strong>Payment Status:</strong> Confirmed</span>

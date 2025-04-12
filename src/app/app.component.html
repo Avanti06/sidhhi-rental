@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="!hideNavbar"></app-navbar>
 <div class="content-wrapper flex-grow-1">
     <router-outlet></router-outlet> <!-- Main Page Content -->
 </div>

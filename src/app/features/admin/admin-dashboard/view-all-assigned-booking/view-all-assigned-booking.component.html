@@ -1,0 +1,54 @@
+<div class="container mt-4">
+  <h3 class="text-center fw-bold mb-4">Assigned Bookings</h3>
+
+  <!-- No Bookings -->
+  <div *ngIf="assignedBookings.length === 0" class="text-center text-muted">
+    <p><i class="bi bi-calendar-x fs-3"></i><br>No bookings have been assigned yet.</p>
+  </div>
+
+  <!-- Assigned Bookings -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" *ngIf="assignedBookings.length > 0">
+    <div class="col" *ngFor="let booking of assignedBookings">
+      <div class="card shadow-sm border-0 h-100 rounded-4">
+        <div class="card-body">
+
+          <!-- Vehicle -->
+          <h5 class="card-title text-primary fw-bold">
+            <i class="bi bi-car-front me-1"></i> {{ booking.vehicleId?.name }}
+          </h5>
+
+          <!-- Badges -->
+          <div class="mb-2">
+            <span class="badge bg-dark me-1">Trip: {{ booking.tripType | titlecase }}</span>
+            <span class="badge bg-success" *ngIf="booking.status === 'assignedDriver'">Driver Assigned</span>
+          </div>
+
+          <!-- Customer -->
+          <p class="mb-1">
+            <strong><i class="bi bi-person-fill text-primary me-1"></i>Customer:</strong>
+            {{ booking.userId?.name }}<br />
+            <small class="text-muted">{{ booking.userId?.phone }}</small>
+          </p>
+
+          <!-- Driver -->
+          <p class="mb-1">
+            <strong><i class="bi bi-person-gear text-success me-1"></i>Driver:</strong>
+            {{ booking.assignedDriver?.name }}<br />
+            <small class="text-muted">{{ booking.assignedDriver?.phone }}</small>
+          </p>
+
+          <!-- Pickup & Drop -->
+          <p class="mb-1"><strong><i class="bi bi-geo-alt-fill text-danger me-1"></i>Pickup:</strong> {{ booking.pickupLocation }}</p>
+          <p class="mb-1"><strong><i class="bi bi-flag-fill text-success me-1"></i>Drop:</strong> {{ booking.dropLocation }}</p>
+
+          <!-- Dates -->
+          <p class="mb-1">
+            <strong><i class="bi bi-calendar-event me-1"></i>Start:</strong> {{ booking.startDate | date:'mediumDate' }}<br />
+            <strong><i class="bi bi-calendar-check me-1"></i>End:</strong> {{ booking.endDate | date:'mediumDate' }}
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -50,6 +50,11 @@ openModal(type: 'login' | 'register') {
   this.modalTitle = type === 'login' ? 'Login' : 'Sign Up';
 }
 
+get hideNavbar(): boolean {
+  const role = this.authService.getUserRole();
+  return role === 'driver'; // || role === 'admin'
+}
+
 logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('role');

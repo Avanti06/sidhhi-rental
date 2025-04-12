@@ -42,6 +42,13 @@
             </a>
           </li>
           <li class="nav-item">
+            <a routerLink="/admin-dashboard/view-all-assigned-booking" routerLinkActive="active" class="nav-link">
+              <i class="bi bi-calendar-check"></i>
+              <span class="link-text" [class.d-none]="isCollapsed">View Assigned Bookings</span>
+              <span class="tooltip" *ngIf="isCollapsed">View Assigned Bookings</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a routerLink="/admin-dashboard/add-driver" routerLinkActive="active" class="nav-link">
               <i class="bi bi-person-plus"></i>
               <span class="link-text" [class.d-none]="isCollapsed">Add Driver</span>

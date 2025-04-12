@@ -5,6 +5,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './cores/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,14 @@ export class AppComponent {
   title = 'sidhi-booking-app';
   showFooter: boolean = true;
 
-  constructor(private router: Router){
+  constructor(private router: Router, private authService: AuthService){
     this.router.events.subscribe(() => {
 
       const hiddenRoutes = [
         '/login',
         '/register',
         '/admin-dashboard',
+        '/driver-dashboard',
         '/dashbord/user'
       ];
 
@@ -30,4 +32,10 @@ export class AppComponent {
     })
 
   }
+
+  get hideNavbar(): boolean {
+    const role = this.authService.getUserRole();
+    return role === 'driver';
+  }
+
 }

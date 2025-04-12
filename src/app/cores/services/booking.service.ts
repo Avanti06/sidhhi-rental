@@ -52,4 +52,11 @@ export class BookingService {
 
     return this.http.put(`${this.baseUrl}/reject/${bookingId}`, {} , { headers });
   }
-}
+
+  getAllAssignedBookings() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any[]>(`${this.baseUrl}/assigned/all`,{ headers });
+  }
+} 
