@@ -1,3 +1,4 @@
+<p>driver-profile works!</p>
 <div class="container" *ngIf="!loading && driver">
     <div class="card p-4 shadow rounded-3">
       <div class="d-flex align-items-center gap-3">
@@ -15,19 +16,16 @@
         <div class="col-md-6">
           <p><strong>License Number:</strong> {{ driver.licenseNumber }}</p>
           <p><strong>Vehicle Type:</strong> {{ driver.vehicleType }}</p>
-          
           <label class="form-label mt-2"><strong>Availability Status</strong></label>
-        <select class="form-select" [(ngModel)]="driver.availabilityStatus" (change)="updateStatus()">
-          <option value="available">✅ Available</option>
-          <option value="busy">🔴 Busy</option>
-          <option value="offline">⚫ Offline</option>
-        </select>
-
-        <div *ngIf="statusMessage" class="mt-2 text-success fw-semibold">
-          {{ statusMessage }}
-        </div>
-
-            
+          <select class="form-select" [(ngModel)]="driver.availabilityStatus" (change)="updateStatus()">
+            <option value="active">✅ Active</option>
+            <option value="busy">🔴 Busy</option>
+            <option value="offline">⚫ Offline</option>
+          </select>
+  
+          <div *ngIf="statusMessage" class="mt-2 text-success fw-semibold">
+            {{ statusMessage }}
+          </div>
         </div>
         <div class="col-md-6">
           <p><strong>Approved:</strong> {{ driver.isApproved ? '✅ Yes' : '❌ No' }}</p>

@@ -24,7 +24,9 @@ import { combineLatest } from 'rxjs';
 import { Component } from '@angular/core';
 import { ViewAllAssignedBookingComponent } from './features/admin/admin-dashboard/view-all-assigned-booking/view-all-assigned-booking.component';
 import { DriverDashboardComponent } from './features/driver/driver-dashboard/driver-dashboard.component';
-
+import { AssignedTripsComponent } from './features/driver/assigned-trips/assigned-trips.component';
+import { ProfilesComponent } from './features/driver/profile/profile.component';
+import { DriverProfileComponent } from './features/driver/driver-profile/driver-profile.component';
 
 export const routes: Routes = [
     {
@@ -83,7 +85,17 @@ export const routes: Routes = [
      {
         path: 'driver-dashboard',
         component: DriverDashboardComponent,
-        title: 'driver dashboard'
+        title: 'driver dashboard',
+        children: [
+            {
+                path: 'assigned-trips',
+                component: AssignedTripsComponent
+            },
+            {
+                path: 'profile',
+                component: DriverProfileComponent
+            }
+        ]
      },
     { 
         path: 'admin-dashboard',

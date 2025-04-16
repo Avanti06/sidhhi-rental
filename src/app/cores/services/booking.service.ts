@@ -59,4 +59,11 @@ export class BookingService {
 
     return this.http.get<any[]>(`${this.baseUrl}/assigned/all`,{ headers });
   }
+
+  updateTripStatus(tripId: string, status: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.baseUrl}/update-trip-status/${tripId}`, { tripStatus: status }, { headers });
+  }
 } 

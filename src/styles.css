@@ -2,3 +2,10 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+    --navbar-height: 0px;
+  }
+  
+  body {
+    padding-top: var(--navbar-height); /* Prevent content from hiding behind sticky navbar */
+  }

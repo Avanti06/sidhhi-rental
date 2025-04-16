@@ -1,4 +1,21 @@
 <!-- Admin Layout Container -->
+ <!-- Admin Header -->
+<header class="admin-header d-flex justify-content-between align-items-center px-3 py-2 bg-white border-bottom shadow-sm">
+  <!-- Sidebar Toggle Button -->
+  <button class="btn  d-lg-none" (click)="toggleMobileSidebar()" title="Toggle Sidebar">
+    <i class="bi bi-list fs-4"></i>
+  </button>
+
+  <!-- Page Title or Brand -->
+  <h5 class="mb-0 fw-semibold">Admin Dashboard</h5>
+
+  <!-- User / Profile Section -->
+  <div class="d-flex align-items-center">
+    <span class="me-2 fw-medium">Admin</span>
+    <i class="bi bi-person-circle fs-4 text-primary"></i>
+  </div>
+</header>
+
 <div class="admin-layout">
     <!-- Sidebar Container -->
     <nav class="sidebar shadow-sm" [class.sidebar-collapsed]="isCollapsed" [class.mobile-open]="isMobileOpen">
@@ -66,17 +83,7 @@
       </div>
       
       <div class="sidebar-footer" *ngIf="!isCollapsed">
-        <div class="user-info d-flex align-items-center">
-          <div class="user-avatar me-2"></div>
-          <div>
-            <p class="mb-0 fw-bold">Admin User</p>
-            <small class="text-muted">admin&#64;sidhhi.com</small>
-          </div>
-        </div>
-        <div class="mt-2 d-flex">
-          <a href="#" class="btn btn-sm btn-outline-light me-2">Profile</a>
-          <a href="#" class="btn btn-sm btn-outline-light">Logout</a>
-        </div>
+          <button href="#" class="btn btn-danger" (click)="logout()">Logout</button>
       </div>
     </nav>
 

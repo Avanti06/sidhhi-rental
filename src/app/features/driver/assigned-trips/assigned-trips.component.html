@@ -1,1 +1,63 @@
-<p>assigned-trips works!</p>
+<div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+  
+  <div *ngIf="!loading && assignedBookings.length === 0" class="alert alert-info text-center">
+    No assigned bookings found.
+  </div>
+  
+  <div *ngIf="!loading && assignedBookings.length > 0">
+    <h4 class="mb-4 fw-bold">📋 Assigned Trips</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Customer</th>
+            <th>Vehicle</th>
+            <th>Trip Type</th>
+            <th>Pickup</th>
+            <th>Drop</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Booking Status</th>
+            <th>Trip Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of assignedBookings">
+            <td>{{ booking.userId?.name }}</td>
+            <td>{{ booking.vehicleId?.name }} ({{ booking.vehicleId?.type }})</td>
+            <td>{{ booking.tripType }}</td>
+            <td>{{ booking.pickupLocation }}</td>
+            <td>{{ booking.dropLocation }}</td>
+            <td>{{ booking.startDate  }}</td>
+            <td>{{ booking.endDate  }}</td>
+            <td>
+              <span class="badge bg-primary">{{ booking.status }}</span>
+            </td>
+            <td>
+              <span class="badge bg-info">{{ booking.tripStatus || 'upcoming' }}</span>
+  
+              <div class="mt-2" *ngIf="booking.tripStatus === 'upcoming'">
+                <button class="btn btn-sm btn-success" (click)="updateTripStatus(booking._id, 'ongoing')">
+                  Start Trip
+                </button>
+              </div>
+  
+              <div class="mt-2" *ngIf="booking.tripStatus === 'ongoing'">
+                <button class="btn btn-sm btn-danger" (click)="updateTripStatus(booking._id, 'completed')">
+                  End Trip
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap Toast/Alert -->
+<div *ngIf="message" class="alert" [ngClass]="alertClass" role="alert">
+  {{ message }}
+</div>
+  

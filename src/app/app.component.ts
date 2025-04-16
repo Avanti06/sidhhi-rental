@@ -35,7 +35,7 @@ export class AppComponent {
 
   get hideNavbar(): boolean {
     const role = this.authService.getUserRole();
-    return role === 'driver';
+    return role === 'driver' || role === 'admin';
   }
 
 }
