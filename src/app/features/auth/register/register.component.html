@@ -29,16 +29,16 @@
           PhoneNo is required
         </div>
       </div>
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label class="form-label">Role</label>
         <select class="form-control" formControlName="role"  (change)="onRoleChange()">
           <option value="user">User</option>
-          <!-- <option value="provider">Provider</option> -->
+           <option value="provider">Provider</option> 
         </select>
-      </div>
+      </div> -->
 
       <!-- Provider Fields (Shown Only if Role is Provider) -->
-      <div *ngIf="isProvider">
+      <!-- <div *ngIf="isProvider">
         <div class="mb-3">
           <label class="form-label">Company Name</label>
           <input type="text" class="form-control" formControlName="company_name" placeholder="Enter company name">
@@ -53,7 +53,7 @@
           <label class="form-label">GST Number</label>
           <input type="text" class="form-control" formControlName="gst_number" placeholder="Enter GST number">
         </div>
-      </div>
+      </div> -->
 
       <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
 

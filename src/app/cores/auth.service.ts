@@ -68,8 +68,8 @@ export class AuthService {
     return this.currentUserValue?.role || null;
   }
   
-  register(userData: FormData): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, userData);
+  registerUser(userData: { name: string, email: String, phoneNo: string, password: string}): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register-user`, userData);
   }
 
   logout() {

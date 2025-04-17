@@ -3,6 +3,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../cores/auth.service';
 
+declare var bootstrap: any;
+
 @Component({
   selector: 'app-register',
   imports: [CommonModule,ReactiveFormsModule],
@@ -27,10 +29,7 @@ export class RegisterComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         phoneNo: ['', Validators.required],
-        role: ['user', Validators.required],
-        company_name: [''],
-        gst_number: [''],
-        company_logo: ['']
+  
       });
 
        // Watch for role changes
@@ -62,24 +61,29 @@ export class RegisterComponent implements OnInit {
     }
   
     register() {
-      const formData = new FormData();
-      Object.entries(this.registerForm.value).forEach(([key, value]) => {
-        if (value !== null && value !== undefined) { // ✅ Avoid appending null/undefined
-          if (typeof value === 'object' && key === 'company_logo') { // ✅ Handle File Uploads
-            formData.append(key, this.selectedFile as File);
-          } else {
-            formData.append(key, value as string);
-          }
-        }
-      });
+      if (this.registerForm.invalid) return;
+      
+      const userData = {
+        name: this.registerForm.value.name,
+        email: this.registerForm.value.email,
+        phoneNo: this.registerForm.value.phoneNo,
+        password: this.registerForm.value.password
+      };
+      
   
-      if (this.selectedFile) {
-        formData.append('company_logo', this.selectedFile);
-      }
-  
-      this.authService.register(formData).subscribe({
+      this.authService.registerUser(userData).subscribe({
         next: (res) => {
-          alert('Registration Successful! Awaiting Admin Approval.');
+          alert('Registration Successful!');
+
+          //clear the form after successful regitration
+          this.registerForm.reset();
+
+          // Close the modal - assuming the modal is controlled via Bootstrap modal
+      const modal = document.getElementById('registerModal'); // Make sure you replace 'registerModal' with your actual modal ID
+      if (modal) {
+        const modalInstance = bootstrap.Modal.getInstance(modal);
+        modalInstance.hide(); // This closes the modal
+      }
         },
         error: (err) => {
           console.error(err);
