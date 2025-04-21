@@ -20,14 +20,10 @@ export class RentalsComponent {
   }
 
   bookRental(rental: any) {
-    console.log('Navigating to book rental :', rental); // Debugging
+    // console.log('Navigating to book rental :', rental); // Debugging
      
     localStorage.setItem('selectedRental', JSON.stringify(rental));
-    this.router.navigate(['book-rental', rental._id], {
-      queryParams: { price: rental.price },
-      state: { rentalData: rental}
-      
-    });
+    this.router.navigate(['book-rental', rental._id]);
   }
   
 

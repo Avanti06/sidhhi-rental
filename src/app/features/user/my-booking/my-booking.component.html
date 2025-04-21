@@ -32,8 +32,8 @@
             </div>
   
             <div class="payment-info border-top pt-3">
-              <p class="mb-1"><strong>Total:</strong> ₹{{ booking.totalAmount }}</p>
-              <p class="mb-1"><strong>Paid:</strong> ₹{{ booking.bookingAmount }}</p>
+              <p class="mb-1"><strong>Total Amount:</strong> ₹{{ booking.totalAmount }}</p>
+              <p *ngIf="booking.remainingAmount > 0" class="mb-1"><strong>Paid:</strong> ₹{{ booking.bookingAmount }}</p>
               <p class="mb-1 text-danger fw-semibold" *ngIf="booking.remainingAmount > 0">
                 <strong>Remaining:</strong> ₹{{ booking.remainingAmount }}
               </p>
@@ -44,6 +44,10 @@
                 (click)="payRemaining(booking)">
                 Pay Remaining ₹{{ booking.remainingAmount }}
               </button>
+              <button class="btn btn-success w-100 mt-2" (click)="generateInvoice(booking._id)">
+                Download Invoice
+              </button>
+              
             </div>
           </div>
         </div>

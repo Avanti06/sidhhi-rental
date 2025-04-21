@@ -60,6 +60,11 @@ export class BookingService {
     return this.http.get<any[]>(`${this.baseUrl}/assigned/all`,{ headers });
   }
 
+  // Method to create Razorpay order for remaining amount
+  createPaymentOrder(bookingId: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/pay-remaining-amount`, { bookingId });
+  }
+  
   updateTripStatus(tripId: string, status: string) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

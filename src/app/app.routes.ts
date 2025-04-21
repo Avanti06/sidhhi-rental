@@ -65,7 +65,7 @@ export const routes: Routes = [
         data: { roles: ['user'] },
      },
      {
-        path: 'book-rental/:id',
+        path: 'book-rental/:rentalId',
         component: BookingFormComponent,
         canActivate: [authGuard],
         title: 'book rental page'

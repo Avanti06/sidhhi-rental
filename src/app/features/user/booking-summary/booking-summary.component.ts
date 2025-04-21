@@ -58,24 +58,33 @@ proceedToPayment() {
   }
 
 
-  console.log("🚀 Debug: Booking Data:", this.bookingData);
-  console.log("🚀 Debug: Total Amount:", this.totalAmount);
-  console.log("🚀 Debug: Booking Amount:", this.bookingAmount);
-  console.log("🚀 Debug: Remaining Amount:", this.remainingAmount);
+  // console.log("🚀 Debug: Booking Data:", this.bookingData);
+  // console.log("🚀 Debug: Total Amount:", this.totalAmount);
+  // console.log("🚀 Debug: Booking Amount:", this.bookingAmount);
+  // console.log("🚀 Debug: Remaining Amount:", this.remainingAmount);
 
+  if (!this.bookingData || !this.bookingData.rentalId) {
+    alert("Error: vehicleId is missing!");
+    return;
+  }
   if (!this.totalAmount || this.totalAmount <= 0) {
     alert("Error: Invalid total amount!");
     return;
   }
 
   const bookingRequest = {
-    ...this.bookingData,
+    vehicleId: this.bookingData.rentalId,
+    tripType: this.bookingData.tripType,
+    startDate: this.bookingData.startDate,
+    endDate: this.bookingData.endDate,
+    pickupLocation: this.bookingData.pickupLocation,
+    dropLocation: this.bookingData.dropLocation,
     totalAmount: this.totalAmount,
     bookingAmount: this.bookingAmount,
     remainingAmount: this.remainingAmount
   };
 
-  console.log("🚀 Debug: Booking Request Payload:", bookingRequest);
+  console.log("🚀 Debug: Booking Request :", bookingRequest);
 
   // 1️⃣ First, create a booking in the backend to get `bookingId`
   this.bookingService.createBooking(bookingRequest, this.token).subscribe({

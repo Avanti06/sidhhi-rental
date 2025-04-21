@@ -4,6 +4,8 @@ import {  FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angul
 
 import {  ActivatedRoute, Router } from '@angular/router';
 import { BookingSummaryComponent } from '../booking-summary/booking-summary.component';
+import { RentalService } from '../../../cores/services/rental.service';
+import { start } from '@popperjs/core';
 
 
 declare var bootstrap: any;
@@ -18,7 +20,8 @@ declare var bootstrap: any;
 })
 export class BookingFormComponent implements OnInit{
 
-  bookingForm: FormGroup;
+  bookingForm!: FormGroup;
+  rentalId!:string;
   showSummaryModal:boolean  = false;
   pricePerDay: number = 0;
   selectedRental: any; // Rental data from parent component
@@ -26,68 +29,103 @@ export class BookingFormComponent implements OnInit{
 
   constructor(private fb: FormBuilder,
     private route : ActivatedRoute,
-    private router: Router
-  ) {
+    private router: Router,
+    private rentalService: RentalService
+  ) {}
 
-    this.bookingForm = this.fb.group({
+  ngOnInit(): void {
+     
+     // 1. Initialize form
+     this.bookingForm = this.fb.group({
       tripType: ['one-way', Validators.required],
       pickupLocation: ['', Validators.required],
       dropLocation: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['']
     });
-  }
-
-  ngOnInit() {
-     
-    console.log()
-     // Get rental data from navigation state
-     const navigation = this.router.getCurrentNavigation();
-
-     if (navigation?.extras.state?.['rentalData']) {
-      this.selectedRental = navigation.extras.state['rentalData'];
-      localStorage.setItem('selectedRental', JSON.stringify(this.selectedRental));
-    } else {
-      const storedRental = localStorage.getItem('selectedRental');
-      this.selectedRental = storedRental ? JSON.parse(storedRental) : null;
-    }
-
-    this.route.queryParams.subscribe(params => {
-      this.pricePerDay = params['price'] ? +params['price'] : 0; // Convert string to number
+   
+      // 2. Toggle endDate validator based on tripType
+    this.bookingForm.get('tripType')!.valueChanges.subscribe(type => {
+      const endDate = this.bookingForm.get('endDate')!;
+      this.isRoundTrip = type === 'round-trip';
+      if (this.isRoundTrip) {
+        endDate.setValidators(Validators.required);
+      } else {
+        endDate.clearValidators();
+        endDate.reset();
+      }
+      endDate.updateValueAndValidity();
     });
 
-    console.log("🚀 Debug: selectedRental:", this.selectedRental);
+    // 3. Read rentalId from route and fetch details
+    this.route.paramMap.subscribe(params => {
+      this.rentalId = params.get('rentalId')!;
+      this.fetchRentalDetails();
+    });
+  }
 
-    // 🔹 Update End Date visibility dynamically
-    this.bookingForm.get('tripType')?.valueChanges.subscribe(value => {
-      this.isRoundTrip = value === 'round-trip';
-      if (!this.isRoundTrip) {
-        this.bookingForm.patchValue({ endDate: '' });
+  private fetchRentalDetails(): void {
+    this.rentalService.getRentalById(this.rentalId).subscribe({
+      next: rental => {
+        // console.log("rental : ", rental);
+        this.selectedRental = rental;
+        this.pricePerDay = rental.price;
+      },
+      error: err => {
+        console.error('Error fetching rental:', err);
       }
     });
   }
+
   
  // ✅ Open Booking Summary
- openBookingSummary() {
-  if (this.bookingForm.valid ) {
-    this.showSummaryModal = true;
-  } else {
-    alert("Please fill all details");
-  }
+ openBookingSummary(): void {
+  if (this.bookingForm.invalid ) {
+    this.bookingForm.markAllAsTouched();
+    return;
+  } 
+  this.showSummaryModal = true;
 }
 
 
 
 get bookingSummaryData() {
-  return {
-    ...this.bookingForm.value,  // Spread operator works in TypeScript
-    vehicleId: this.selectedRental?._id
-  };
+  const { tripType, pickupLocation, dropLocation, startDate, endDate } = this.bookingForm.value;
+    const days = this.calculateDays(tripType, startDate, endDate);
+    const totalPrice = days * this.pricePerDay;
+    const bookingAmount = totalPrice * 0.2;
+    const remainingAmount = totalPrice - bookingAmount;
+
+    return {
+      rentalId: this.rentalId,
+      tripType,
+      pickupLocation,
+      dropLocation,
+      startDate,
+      endDate: this.isRoundTrip ? endDate : null,
+      days,
+      pricePerDay: this.pricePerDay,
+      totalPrice,
+      bookingAmount,
+      remainingAmount 
+    };
+  }
+
+
+private calculateDays(type: string, start: string, end: string): number {
+  if (type !== 'round-trip') {
+    return 1;
+  }
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const diffMs = endDate.getTime() - startDate.getTime();
+  return Math.floor(diffMs / (1000 * 3600 * 24));
 }
 
 
 
-closeSummaryModal() {
+closeSummaryModal():void {
   this.showSummaryModal = false;
 }
 }
+
